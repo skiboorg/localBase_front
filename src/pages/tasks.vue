@@ -1,6 +1,11 @@
 <template>
 
 <q-page padding>
+  <div class="container">
+  <div class="q-gutter-md">
+    <router-link class="text-primary" to="/tasks">Задачи</router-link>
+    <router-link to="/">Записи</router-link>
+  </div>
   <div class="flex items-center q-mb-md">
     <q-checkbox v-model="is_task_drag" class="q-mr-md" label="Сменить порядок задач"/>
     <q-checkbox v-model="is_column_drag" class="q-mr-md"  label="Сменить порядок колонок"/>
@@ -12,9 +17,9 @@
 
   </div>
 
-  <div class="container">
+
     <div class="column-grid">
-      <div class="column"
+      <div class="column-item"
            v-for="(column, column_index) in columns"
            :id="`${column_index}`"
            :draggable="is_column_drag"
@@ -247,7 +252,7 @@ const columnAction = async (action,id) => {
   padding: 0 90px
   min-height: 79vh
   height: fit-content
-.column
+.column-item
   border: 2px solid #cecece
   &.ondrop
     border-color: green
